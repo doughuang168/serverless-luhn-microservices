@@ -8,8 +8,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 public class LuhnApiCheckDigit implements RequestHandler<Map<String,String>,String> {
-    private static final String NUMERATOR_KEY = "numerator";
-    private static final String DENOMINATOR_KEY = "denominator";
+
     private static final String CARDNUMBER_KEY = "cardnmber";
     private static final String template = "%s";
     private static final Logger LOGGER = Logger.getLogger(LuhnApiValidate.class.getName());
@@ -21,8 +20,6 @@ public class LuhnApiCheckDigit implements RequestHandler<Map<String,String>,Stri
         if(!values.containsKey(CARDNUMBER_KEY)) {
             return "You need both numberator and denominator";
         }
-
-////////////////////////////////////////////////
 
         Luhn luhnInstance = new Luhn();
         String result="";
@@ -38,16 +35,7 @@ public class LuhnApiCheckDigit implements RequestHandler<Map<String,String>,Stri
                 chkDigit
         );
         return message;
-//////////////////////////////////////////////
-//        new BigDecimal(23.3);
-//
-//        try {
-//            BigDecimal numerator = new BigDecimal(values.get(NUMERATOR_KEY));
-//            BigDecimal denominator= new BigDecimal(values.get(DENOMINATOR_KEY));
-//            return  numerator.divide(denominator).toString();
-//        } catch (Exception e) {
-//            return "Please provide valid values";
-//        }
+
 
 
     }

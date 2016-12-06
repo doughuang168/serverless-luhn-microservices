@@ -10,8 +10,7 @@ import java.util.logging.Logger;
 
 
 public class LuhnApiValidCardNumber implements RequestHandler<Map<String,String>,String> {
-    private static final String NUMERATOR_KEY = "numerator";
-    private static final String DENOMINATOR_KEY = "denominator";
+
     private static final String STARTRANGE_KEY = "startRange";
     private static final String ENDRANGE_KEY = "endRange";
     private static final String template = "%s";
@@ -25,7 +24,6 @@ public class LuhnApiValidCardNumber implements RequestHandler<Map<String,String>
             return "You need both startRange and endRange";
         }
 
-////////////////////////////////////////////////
         Luhn luhnInstance = new Luhn();
         String result="";
         String message="";
@@ -43,18 +41,6 @@ public class LuhnApiValidCardNumber implements RequestHandler<Map<String,String>
                 numbers.toString()
         );
         return message;
-//////////////////////////////////////////////
-
-
-//        new BigDecimal(23.3);
-//
-//        try {
-//            BigDecimal numerator = new BigDecimal(values.get(NUMERATOR_KEY));
-//            BigDecimal denominator= new BigDecimal(values.get(DENOMINATOR_KEY));
-//            return  numerator.divide(denominator).toString();
-//        } catch (Exception e) {
-//            return "Please provide valid values";
-//        }
     }
 
 }
